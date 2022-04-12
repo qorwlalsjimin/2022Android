@@ -5,10 +5,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".MainActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="30sp"
+        android:textColor="#0000ff"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="30dp"/>
+    <!--hint나 text는 둘 중 하나만-->
     <EditText
-        android:layout_width="70dp"
-        android:layout_height="wrap_content"/>
+        android:id="@+id/edit1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/edit_hint"
+        android:layout_marginBottom="20dp"
+        />
+
+    <EditText
+        android:id="@+id/edit2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_hint"
+        />
+
+    <Button
+        android:id="@+id/btn_plus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="@string/btn_plus"
+        />
+
+    <Button
+        android:id="@+id/btn_minus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="@string/btn_minus"
+        />
+
+    <Button
+        android:id="@+id/btn_multi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="@string/btn_multi"
+        />
+
+    <Button
+        android:id="@+id/btn_divide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="@string/btn_divide"
+        />
+
+    <TextView
+        android:id="@+id/text_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00ffff"
+        android:text="@string/text_result"
+        android:textColor="#ff0000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="bottom"
+        />
 
 </LinearLayout>
