@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Mirim_Project_0412_2</string>
+    <string name="app_name">Simple Calculator</string>
+    <string name="edit_hint">숫자 입력</string>
+    <string name="btn_plus">더하기</string>
+    <string name="btn_minus">빼기</string>
+    <string name="btn_multi">곱하기</string>
+    <string name="btn_divide">나누기</string>
+    <string name="text_result">계산 결과 : </string>
 </resources>
