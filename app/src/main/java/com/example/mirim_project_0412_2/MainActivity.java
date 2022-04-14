@@ -49,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG).show();
                 return; //현재 메소드 빠져나옴
             }
-            int num1 = Integer.parseInt(edit1Str);
-            int num2 = Integer.parseInt(edit2Str);
+            double num1 = Double.parseDouble(edit1Str);
+            double num2 = Double.parseDouble(edit2Str);
 
-            int result = 0;
+            double result = 0;
 
             switch (view.getId()){
                 case R.id.btn_plus:
