@@ -56,18 +56,30 @@ public class MainActivity extends AppCompatActivity {
 
             switch (view.getId()){
                 case R.id.btn_plus:
-                    result= num1+num2;
+                    result= Math.round(num1+num2);
                     break;
                 case R.id.btn_minus:
-                    result= num1-num2;
+                    result= Math.round(num1-num2);
                     break;
                 case R.id.btn_multi:
                     result= num1*num2;
                     break;
                 case R.id.btn_divide:
+                    if(num2==0.0){
+                        Toast.makeText(getApplicationContext(),
+                                "0으로 나눌 수 없습니다.",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     result= num1/num2;
                     break;
                 case R.id.btn_mod:
+                    if(num2==0.0){
+                        Toast.makeText(getApplicationContext(),
+                                "0으로 나눌 수 없습니다.",
+                                Toast.LENGTH_LONG).show();
+                        return;
+                    }
                     result= num1%num2;
                     break;
             }
