@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity {
 
             switch (view.getId()){
                 case R.id.btn_plus:
-                    result= Math.round(num1+num2);
+                    result= num1+num2;
                     break;
                 case R.id.btn_minus:
-                    result= Math.round(num1-num2);
+                    result= num1-num2;
                     break;
                 case R.id.btn_multi:
                     result= num1*num2;
@@ -84,7 +84,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
             }
             textResult.setText(R.string.text_result);
-            textResult.append(" "+result);
+            textResult.append(" "+String.format("%.2f", result));
         }
     };
+
+
 }
