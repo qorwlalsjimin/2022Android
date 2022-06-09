@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         });
         time.setVisibility(View.INVISIBLE);
         date.setVisibility(View.INVISIBLE);
+        rg.setVisibility(View.INVISIBLE);
     }
     RadioGroup.OnCheckedChangeListener rgListener = new RadioGroup.OnCheckedChangeListener() {
         @Override
@@ -72,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
     View.OnClickListener timerListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            rg.setVisibility(View.VISIBLE);
             timer.setBase(SystemClock.elapsedRealtime());
             timer.start();
             timer.setTextColor(Color.RED);
@@ -84,7 +86,10 @@ public class MainActivity extends AppCompatActivity {
             timer.stop();
             timer.setTextColor(Color.BLUE);
             textResult.setText(selectedYear+"년 "+selectedMonth+"월 "+selectedDay+"일 ");
-            textResult.append(time.getCurrentHour() + "시 "+time.getCurrentMinute()+"분");
+            textResult.append(time.getCurrentHour() + "시 "+time.getCurrentMinute()+"분 예약 완료됨");
+            rg.setVisibility(View.INVISIBLE);
+            date.setVisibility(View.INVISIBLE);
+            time.setVisibility(View.INVISIBLE);
             return true;
         }
     };
