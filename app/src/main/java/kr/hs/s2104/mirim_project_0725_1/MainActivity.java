@@ -9,11 +9,14 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     }
 
-    public class MyFragment extends Fragment{
+    public static class MyFragment extends Fragment{
         String tabName;
         @Override
         public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,14 +88,22 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             layout.setOrientation(LinearLayout.VERTICAL);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
             layout.setLayoutParams(params);
+            layout.setGravity(Gravity.CENTER);
+
+            ImageView imgV = new ImageView(super.getActivity());
+            layout.addView(imgV);
+
             if(tabName.equals("체리")){
                 layout.setBackgroundColor(Color.MAGENTA);
+                imgV.setImageResource(R.drawable.cherry);
             }
             else if(tabName.equals("하트")){
                 layout.setBackgroundColor(Color.YELLOW);
+                imgV.setImageResource(R.drawable.heart);
             }
             else if(tabName.equals("눈사람")){
-                layout.setBackgroundColor(Color.BLUE);
+                layout.setBackgroundColor(Color.BLUE);                imgV.setImageResource(R.drawable.cherry);
+                imgV.setImageResource(R.drawable.snowman);
             }
 
             return layout;
