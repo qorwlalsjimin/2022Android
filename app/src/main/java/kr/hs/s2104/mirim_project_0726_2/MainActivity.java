@@ -20,7 +20,8 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout linear;
-    Button btn2;
+    Button btn2, btn5;
+    String[] listArr = {"한라산", "추자도", "범섬"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,26 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(toastListener);
         Button btn4 = findViewById(R.id.btn_dialog);
         btn4.setOnClickListener(dialogListener);
+        btn5 = findViewById(R.id.btn_dialog_list);
+        btn5.setOnClickListener(listDialogListener);
     }
+
+    View.OnClickListener listDialogListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+            dlg.setIcon(R.drawable.dialog_icon1);
+            dlg.setTitle("좋아하는 여행지는?");
+            dlg.setItems(listArr, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    btn5.setText(listArr[i]);
+                }
+            });
+            dlg.setNegativeButton("닫기", null);
+            dlg.show();
+        }
+    };
 
     View.OnClickListener toastListener = new View.OnClickListener() {
         @Override
@@ -61,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                     linear.setBackgroundColor(Color.MAGENTA);
                 }
             });
+            dialog.setNegativeButton("취소", null);
             dialog.show();
         }
     };

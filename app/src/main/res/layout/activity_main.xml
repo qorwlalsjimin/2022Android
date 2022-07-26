@@ -33,4 +33,10 @@
         android:layout_height="wrap_content"
         android:text="대화상자 출력"/>
 
+    <Button
+        android:id="@+id/btn_dialog_list"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="목록대화상자 출력"/>
+
 </LinearLayout>
