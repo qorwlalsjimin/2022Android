@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             dlg.setSingleChoiceItems(listArr, 0, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    btn5.setText(listArr[i]);
+                    btn6.setText(listArr[i]);
                 }
             });
             dlg.setNegativeButton("닫기", null);
