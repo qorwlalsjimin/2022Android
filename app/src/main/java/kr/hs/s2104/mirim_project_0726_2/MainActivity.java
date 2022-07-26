@@ -65,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.item_zoom:
                 btn2.setScaleX(2);
                 return true;
+            case R.id.item_origin:
+                btn2.setRotation(0);
+                btn2.setScaleX(1);
+                return true;
         }
         return false;
     }
