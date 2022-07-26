@@ -3,6 +3,9 @@ package kr.hs.s2104.mirim_project_0726_2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -32,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 
         Button btn3 = findViewById(R.id.btn_toast);
         btn3.setOnClickListener(toastListener);
+        Button btn4 = findViewById(R.id.btn_dialog);
+        btn4.setOnClickListener(dialogListener);
     }
 
     View.OnClickListener toastListener = new View.OnClickListener() {
@@ -40,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
             Toast t = Toast.makeText(MainActivity.this, "토스트 위치 변경 연습", Toast.LENGTH_SHORT);
             t.setGravity(Gravity.CENTER, Gravity.CENTER,0);
             t.show();
+        }
+    };
+
+    View.OnClickListener dialogListener =  new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+            dialog.setIcon(R.drawable.dialog_icon1);
+            dialog.setTitle("대화상자연습");
+            dialog.setMessage("여기는 대화상자 내용이 들어갑니다.");
+            dialog.setPositiveButton("확인", new DialogInterface.OnClickListener(){ //Dialog 리스너는 특별해
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    linear.setBackgroundColor(Color.MAGENTA);
+                }
+            });
+            dialog.show();
         }
     };
 
