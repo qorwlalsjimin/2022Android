@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
             dlg.setIcon(R.drawable.dialog_icon1);
             dlg.setTitle("좋아하는 여행지는?");
-            dlg.setItems(listArr, new DialogInterface.OnClickListener() {
+            dlg.setSingleChoiceItems(listArr, 0, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     btn5.setText(listArr[i]);
