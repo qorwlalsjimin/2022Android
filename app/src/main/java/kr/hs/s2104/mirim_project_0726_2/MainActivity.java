@@ -20,7 +20,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout linear;
-    Button btn2, btn5;
+    Button btn2, btn5, btn6;
     String[] listArr = {"한라산", "추자도", "범섬"};
 
     @Override
@@ -40,7 +40,26 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(dialogListener);
         btn5 = findViewById(R.id.btn_dialog_list);
         btn5.setOnClickListener(listDialogListener);
+        btn6 = findViewById(R.id.btn_radio_list);
+        btn6.setOnClickListener(radioDialogListener);
     }
+
+    View.OnClickListener radioDialogListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+            dlg.setIcon(R.drawable.dialog_icon1);
+            dlg.setTitle("좋아하는 여행지는?");
+            dlg.setSingleChoiceItems(listArr, 0, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    btn5.setText(listArr[i]);
+                }
+            });
+            dlg.setNegativeButton("닫기", null);
+            dlg.show();
+        }
+    };
 
     View.OnClickListener listDialogListener = new View.OnClickListener() {
         @Override
@@ -48,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
             AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
             dlg.setIcon(R.drawable.dialog_icon1);
             dlg.setTitle("좋아하는 여행지는?");
-            dlg.setSingleChoiceItems(listArr, 0, new DialogInterface.OnClickListener() {
+            dlg.setItems(listArr, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     btn5.setText(listArr[i]);
