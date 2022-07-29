@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView[] imgv = new ImageView[imgName.length];
     int[] voteCount = new int[imgName.length];
     int[] imgId = {R.id.imgv01, R.id.imgv02,R.id.imgv03,R.id.imgv04,R.id.imgv05,R.id.imgv06,R.id.imgv07,R.id.imgv08,R.id.imgv09};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
