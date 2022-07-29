@@ -27,7 +27,7 @@
         <ImageView
             android:id="@+id/img_first"
             android:layout_width="300dp"
-            android:layout_height="350dp"
+            android:layout_height="250dp"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_span="2"
