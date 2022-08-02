@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             ImageView imgv = new ImageView(context);
-            ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(200, 300);
-            //GridView.LayoutParams params = new GridView.LayoutParams(200, 300);
+            //ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(200, 300);
+            GridView.LayoutParams params = new GridView.LayoutParams(200, 300);
             imgv.setLayoutParams(params);
             imgv.setScaleType(ImageView.ScaleType.FIT_CENTER);
             imgv.setPadding(5,5,5,5);
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-            return null;
+            return imgv;
         }
     }
 }
