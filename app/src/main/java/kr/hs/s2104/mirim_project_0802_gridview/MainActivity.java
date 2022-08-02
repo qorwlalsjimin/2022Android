@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.gisaeng, R.drawable.jangnan, R.drawable.juragi, R.drawable.minions, R.drawable.kissingbooth,
             R.drawable.after, R.drawable.busanhang, R.drawable.exit, R.drawable.flipped, R.drawable.soul,
             R.drawable.gisaeng, R.drawable.jangnan, R.drawable.juragi, R.drawable.minions, R.drawable.kissingbooth};
+    String[] posterName = {"애프터", "부산행", "엑시트","플립","소울","기생충","장난스런 키스","쥬라기공원","미니언즈","키싱부스"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
-                    dlg.setTitle("Large Poster");
+                    dlg.setTitle(posterName[pos%10]);
                     dlg.setIcon(R.drawable.movic);
                     View dlgView = View.inflate(MainActivity.this, R.layout.dialog, null);
                     ImageView imgvDlg = dlgView.findViewById(R.id.imgv_dlg);
