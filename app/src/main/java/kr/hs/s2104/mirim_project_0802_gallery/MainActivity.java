@@ -11,11 +11,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     int[] posterId = {R.drawable.after, R.drawable.busanhang, R.drawable.exit, R.drawable.flipped, R.drawable.soul,
             R.drawable.gisaeng, R.drawable.jangnan, R.drawable.juragi, R.drawable.minions, R.drawable.kissingbooth};
+    String[] posterName = {"애프터", "부산행", "엑시트","플립","소울","기생충","장난스런 키스","쥬라기공원","미니언즈","키싱부스"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +64,13 @@ public class MainActivity extends AppCompatActivity {
                     ImageView largeImgv = findViewById(R.id.imgv);
                     largeImgv.setScaleType(ImageView.ScaleType.FIT_CENTER);
                     largeImgv.setImageResource(posterId[pos]);
+
+                    Toast t = new Toast(MainActivity.this);
+                    View toastView = View.inflate(context, R.layout.toast, null);
+                    TextView movieTitle = toastView.findViewById(R.id.text_movic_title);
+                    movieTitle.setText(posterName[pos]);
+                    t.setView(toastView);
+                    t.show();
                     return false;
                 }
             });
