@@ -1,8 +1,10 @@
 package kr.hs.s2104.mirim_project_0803_sqlite;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -70,13 +72,22 @@ public class MainActivity extends AppCompatActivity {
                     break;
 
                 case R.id.btn_delete:
-                    db = dbHelper.getWritableDatabase();
-                    db.execSQL("DELETE FROM idolTBL WHERE name = '"+editName.getText().toString()+"';");
-                    btnSelect.callOnClick();
-                    db.close();
-                    Toast.makeText(getApplicationContext(), "idol 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
-                    editName.setText("");
-                    editCount.setText("");
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+                    dlg.setTitle("정말 삭제하시겠습니까?");
+                    dlg.setPositiveButton("네", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            db = dbHelper.getWritableDatabase();
+                            db.execSQL("DELETE FROM idolTBL WHERE name = '"+editName.getText().toString()+"';");
+                            btnSelect.callOnClick();
+                            db.close();
+                            Toast.makeText(getApplicationContext(), "idol 정보가 삭제되었습니다.", Toast.LENGTH_SHORT).show();
+                            editName.setText("");
+                            editCount.setText("");
+                        }
+                    });
+                    dlg.setNegativeButton("아니오",null);
+                    dlg.show();
                     break;
 
                 case R.id.btn_select:
