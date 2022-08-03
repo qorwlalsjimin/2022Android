@@ -73,7 +73,8 @@ public class MainActivity extends AppCompatActivity {
 
                 case R.id.btn_delete:
                     AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
-                    dlg.setTitle("정말 삭제하시겠습니까?");
+                    dlg.setTitle("삭제 유무");
+                    dlg.setMessage("정말로 삭제하시겠습니까?");
                     dlg.setPositiveButton("네", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
