@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     DBHelper dbHelper;
+    Button btnSelect;
     EditText editName, editCount, editResultName, editResultCount;
 
     @Override
@@ -26,9 +27,13 @@ public class MainActivity extends AppCompatActivity {
         editResultCount = findViewById(R.id.edit_result_counts);
         Button btnInit = findViewById(R.id.btn_init);
         Button btnInsert = findViewById(R.id.btn_insert);
-        Button btnSelect = findViewById(R.id.btn_select);
+        Button btnUpdate = findViewById(R.id.btn_update);
+        Button btnDelete = findViewById(R.id.btn_delete);
+        btnSelect = findViewById(R.id.btn_select);
         btnInit.setOnClickListener(btnListener);
         btnInsert.setOnClickListener(btnListener);
+        btnUpdate.setOnClickListener(btnListener);
+        btnDelete.setOnClickListener(btnListener);
         btnSelect.setOnClickListener(btnListener);
         dbHelper = new DBHelper(this);
     }
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     dbHelper.onUpgrade(db, 1, 2); //초기화하려면 버전을 바꿔야한다
                     db.close();
                     break;
+                    
                 case R.id.btn_insert:
                     db = dbHelper.getWritableDatabase();
                     db.execSQL("INSERT INTO idolTBL VALUES('"+editName.getText().toString()+"',"+editCount.getText().toString()+");");
@@ -50,7 +56,29 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "새로운 idol 정보가 추가되었습니다.", Toast.LENGTH_SHORT).show();
                     editName.setText("");
                     editCount.setText("");
+                    btnSelect.callOnClick(); //조회 버튼 안 눌러도 보임
                     break;
+                    
+                case R.id.btn_update:
+                    db = dbHelper.getWritableDatabase();
+                    db.execSQL("UPDATE idolTBL SET cnt = "+editCount.getText().toString()+" WHERE name = '"+editName.getText().toString()+"';");
+                    btnSelect.callOnClick();
+                    db.close();
+                    Toast.makeText(getApplicationContext(), "idol 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+                    editName.setText("");
+                    editCount.setText("");
+                    break;
+
+                case R.id.btn_delete:
+                    db = dbHelper.getWritableDatabase();
+                    db.execSQL("DELETE FROM idolTBL WHERE name = '"+editName.getText().toString()+"';");
+                    btnSelect.callOnClick();
+                    db.close();
+                    Toast.makeText(getApplicationContext(), "idol 정보가 수정되었습니다.", Toast.LENGTH_SHORT).show();
+                    editName.setText("");
+                    editCount.setText("");
+                    break;
+
                 case R.id.btn_select:
                     db = dbHelper.getReadableDatabase();
                     Cursor c = db.rawQuery("select * from idolTBL;", null);
