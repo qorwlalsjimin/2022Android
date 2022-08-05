@@ -7,6 +7,7 @@ import android.Manifest;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
@@ -14,19 +15,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView list1;
     Button btnPlay, btnPause, btnStop;
-    TextView textMusic;
+    TextView textMusic, textTime;
     ArrayList<String> musicList;
     String selectedmusic;
+    SeekBar seekBar;
 
     String musicPath = Environment.getExternalStorageDirectory().getPath()+"/";
     MediaPlayer mPlayer;
@@ -44,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         btnPause = findViewById(R.id.btn_pause);
         btnStop = findViewById(R.id.btn_stop);
         textMusic = findViewById(R.id.text_music);
+        textTime = findViewById(R.id.text_time);
+        seekBar = findViewById(R.id.seek_bar);
 
         musicList = new ArrayList<String>();
         File[] files = new File(musicPath).listFiles();
@@ -82,6 +88,26 @@ public class MainActivity extends AppCompatActivity {
                 }catch (IOException e){
                     e.printStackTrace();
                 }
+
+                new Thread(){
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss");
+                    @Override
+                    public void run() {
+                        if(mPlayer == null)
+                            return;
+                        seekBar.setMax(mPlayer.getDuration());
+                        while(mPlayer.isPlaying()){
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    seekBar.setProgress(mPlayer.getCurrentPosition());
+                                    textTime.setText("진행시간: "+timeFormat.format(mPlayer.getCurrentPosition()));
+                                }
+                            });
+                            SystemClock.sleep(200);
+                        }
+                    }
+                }.start();
             }
         });
         btnPause.setOnClickListener(new View.OnClickListener() {
@@ -94,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mPlayer.start();
                     btnPause.setText("일시정지");
-
-                    
                 }
             }
         });
@@ -110,5 +134,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         btnStop.setClickable(false);
+
     }
 }
