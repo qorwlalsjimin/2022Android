@@ -120,6 +120,23 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mPlayer.start();
                     btnPause.setText("일시정지");
+
+                    new Thread(){
+                        SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss");
+                        @Override
+                        public void run() {
+                            while(mPlayer.isPlaying()){
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        seekBar.setProgress(mPlayer.getCurrentPosition());
+                                        textTime.setText("진행시간: "+timeFormat.format(mPlayer.getCurrentPosition()));
+                                    }
+                                });
+                                SystemClock.sleep(200);
+                            }
+                        }
+                    }.start();
                 }
             }
         });
@@ -131,6 +148,15 @@ public class MainActivity extends AppCompatActivity {
                 btnPlay.setClickable(true);
                 btnStop.setClickable(false);
                 textMusic.setText("실행중인 음악: ");
+
+                new Thread(){
+                    SimpleDateFormat timeFormat = new SimpleDateFormat("mm:ss");
+                    @Override
+                    public void run() {
+                        textTime.setText("진행시간: ");
+                        seekBar.setProgress(0);
+                    }
+                }.start();
             }
         });
         btnStop.setClickable(false);
