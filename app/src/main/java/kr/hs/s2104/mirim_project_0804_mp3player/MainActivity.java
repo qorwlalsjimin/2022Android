@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     ListView list1;
     Button btnPlay, btnPause, btnStop;
     TextView textMusic;
-    ProgressBar proBar;
     ArrayList<String> musicList;
     String selectedmusic;
 
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         btnPause = findViewById(R.id.btn_pause);
         btnStop = findViewById(R.id.btn_stop);
         textMusic = findViewById(R.id.text_music);
-        proBar = findViewById(R.id.pro_bar);
 
         musicList = new ArrayList<String>();
         File[] files = new File(musicPath).listFiles();
@@ -81,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     btnPlay.setClickable(false);
                     btnStop.setClickable(true);
                     textMusic.setText("실행중인 음악: "+selectedmusic);
-                    proBar.setVisibility(View.VISIBLE);
                 }catch (IOException e){
                     e.printStackTrace();
                 }
@@ -97,6 +94,8 @@ public class MainActivity extends AppCompatActivity {
                 else {
                     mPlayer.start();
                     btnPause.setText("일시정지");
+
+                    
                 }
             }
         });
@@ -108,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                 btnPlay.setClickable(true);
                 btnStop.setClickable(false);
                 textMusic.setText("실행중인 음악: ");
-                proBar.setVisibility(View.INVISIBLE);
             }
         });
         btnStop.setClickable(false);
