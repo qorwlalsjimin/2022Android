@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <RatingBar
+        android:id="@+id/rating_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleSmall"
+        android:numStars="10"
+        android:stepSize="1"/>
+
+    <RatingBar
+        android:id="@+id/rating_medium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:numStars="5"
+        android:stepSize="1.5"/>
+
+    <RatingBar
+        android:layout_marginTop="20dp"
+        android:id="@+id/rating_basic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_inc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="증가"/>
+
+    <Button
+        android:id="@+id/btn_dec"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="감소"/>
+
+</LinearLayout>
